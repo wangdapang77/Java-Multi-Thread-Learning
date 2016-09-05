@@ -10,8 +10,9 @@ com.sedion.mynawang
 ├── basic（多线程基础）
 │   ├── DiscoverThread                              初识多线程
 │   ├── PriorityThread                              线程优先级
-│   └── SingletonLazy                               懒汉式（线程不安全、懒加载）
-├── Chapter02-Factory/
+│   └── StatusThread                                线程状态
+├── util（多线程工具）
+│   ├── SleepUtils                                  休眠工具
 ```
 
 
