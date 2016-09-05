@@ -5,6 +5,19 @@
 
 关于Java多线程技术的学习中的例子汇总
 
+```
+com.sedion.mynawang
+├── basic（多线程基础）
+│   ├── DiscoverThread                              初识多线程
+│   ├── PriorityThread                              线程优先级
+│   └── SingletonLazy                               懒汉式（线程不安全、懒加载）
+├── Chapter02-Factory/
+```
+
+
+
+
+
 ### 技术交流
 
 博客地址：[http://mynawang.top][1]
