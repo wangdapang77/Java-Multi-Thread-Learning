@@ -10,7 +10,8 @@ com.sedion.mynawang
 ├── basic（多线程基础）
 │   ├── DiscoverThread                              初识多线程
 │   ├── PriorityThread                              线程优先级
-│   └── StatusThread                                线程状态
+│   ├── StatusThread                                线程状态
+│   └── DaemonThread                                守护线程
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
 ```
