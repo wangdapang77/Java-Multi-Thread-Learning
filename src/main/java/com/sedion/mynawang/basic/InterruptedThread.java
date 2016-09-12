@@ -191,16 +191,4 @@ public class InterruptedThread {
      */
     private native boolean isInterrupted(boolean ClearInterrupted);
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
