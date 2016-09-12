@@ -14,7 +14,8 @@ com.sedion.mynawang
 │   ├── DaemonThread                                守护线程
 │   ├── SourceThread                                Thread线程源码阅读
 │   ├── InterruptedThread                           线程中断
-│   └── SuspendThread                               暂停线程（过期）
+│   ├── SuspendThread                               暂停线程（过期）
+│   └── StopThread                                  停止线程
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
 ```
