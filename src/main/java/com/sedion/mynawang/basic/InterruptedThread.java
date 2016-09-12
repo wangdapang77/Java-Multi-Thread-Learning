@@ -14,6 +14,12 @@ import java.util.concurrent.TimeUnit;
 public class InterruptedThread {
 
     public static void main(String[] args) throws InterruptedException {
+       // test1();
+        test2();
+    }
+
+    // interrupted 改变中断的是状态
+    private static void test1() throws InterruptedException {
         // 初始化间断休眠线程
         Thread sleepThread = new Thread(new SleepRunner(), "sleppThread");
         sleepThread.setDaemon(true);
@@ -36,10 +42,48 @@ public class InterruptedThread {
         // 判断线程中断状态，不清除中断状态
         System.out.println("SleepThread interrupted is: " + sleepThread.isInterrupted());
         System.out.println("BusyThread interrupted is: " + busyThread.isInterrupted());
+        /**
+         * SleepRunner 抛出异常java.lang.InterruptedException: sleep interrupted
+         * interrupt()只是改变中断状态而已，不会中断正在运行的线程。
+         * 这个方法实际完成的是给受阻的线程抛出一个中断信号，这样受阻线程就得以退出阻塞的状态。
+         *
+         * 注：如果线程被Object.wait，Thread.join和Thread.sleep三种方法之一阻塞，那么它将接收到
+         * 一个中断异常InterruptedException，从而提早地终结被阻塞状态。
+         *
+         * 如果线程没有被阻塞，这时调用interrupt()将不起作用；否则，线程就将得到InterruptedException
+         * 异常（该线程必须事先预备好处理此状况），接着逃离阻塞状态。
+         *
+         * SleepRunner 抛出异常：
+         * 在sleep,wait,join这些方法内部会不断检查中断状态的值,而自己抛出的InterruptedException。
+         * 如果线程正在执行一些指定的操作时如赋值,for,while,if,调用方法等,都不会去检查中断状态（BusyThread）
+         *
+         */
 
         // 防止线程立即结束
         SleepUtils.second(2);
+
     }
+
+
+    private static void test2() throws InterruptedException {
+        Mythread mythread = new Mythread();
+        mythread.start();
+        Thread.sleep(1000);
+
+        // 1. 执行mythread.interrupt()，中断Mythread线程，而main线程没有中断，所以mythread.interrupted()为都false
+        mythread.interrupt();
+        // 2. Thread.currentThread().interrupt()中断当前线程，即main线程，而mythread.interrupted()是判断中断状态
+        // 并且清除中断状态，所以第一次执行mythread.interrupted()打印true，第二次执行打印false
+        Thread.currentThread().interrupt();
+
+        // 以下判断的是当前线程是否中断，而此处的当前线程为main线程
+
+        System.out.println("是否停止1？" + mythread.interrupted());
+        System.out.println("是否停止2？" + mythread.interrupted());
+
+    }
+
+
 
     // 间断休眠线程
     static class SleepRunner implements Runnable {
@@ -60,6 +104,15 @@ public class InterruptedThread {
     }
 
 
+    static class Mythread extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            for (int i = 0; i < 150000; i++) {
+                System.out.println("i=" + (i+1));
+            }
+        }
+    }
 
 
 
