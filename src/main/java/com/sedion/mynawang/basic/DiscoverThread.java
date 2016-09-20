@@ -24,7 +24,6 @@ public class DiscoverThread {
         }
     }
 
-
     /*
      * Debug打印信息：
     [8]JDWP Command Reader
