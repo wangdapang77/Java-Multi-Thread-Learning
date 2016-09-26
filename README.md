@@ -1,4 +1,4 @@
-# Java-Multi-Thread-Learning
+# Java-Multi-Thread-Learning [![star this repo](http://githubbadges.com/star.svg?user=mynawang&repo=Java-Multi-Thread-Learning&style=flat&color=fff&background=1081C1)](https://github.com/mynawang/Java-Multi-Thread-Learning) [![fork this repo](http://githubbadges.com/fork.svg?user=mynawang&repo=Java-Multi-Thread-Learning&style=flat&color=fff&background=1081C1)](https://github.com/mynawang/Java-Multi-Thread-Learning/fork)
 
 
 ### 简介
@@ -17,8 +17,8 @@ com.sedion.mynawang
 │   ├── SuspendThread                               暂停线程（过期）
 │   ├── StopThread                                  停止线程（过期）
 │   └── YieldThread                                 放弃当前线程CPU资源
-├── advanced_synchrinozed（同步锁学习）
-├── advanced_volatile（volatile关键字学习）
+├── advanced_synchrinozed（同步锁）
+├── advanced_volatile（volatile关键字）
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
 ```
