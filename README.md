@@ -17,8 +17,11 @@ com.sedion.mynawang
 │   ├── SuspendThread                               暂停线程（过期）
 │   ├── StopThread                                  停止线程（过期）
 │   └── YieldThread                                 放弃当前线程CPU资源
-├── advanced_synchrinozed（同步锁）
-├── advanced_volatile（volatile关键字）
+├── advanced（多线程重要知识点）
+│   ├── _synchrinozed（同步锁）
+│   │   ├── pra1_safewithout                       方法内变量线程安全
+│   │   ├── pra2_safewithsynchronized              加synchronized保证实例变量线程安全
+│   ├── _volatile（volatile关键字）
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
 ```
