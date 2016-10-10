@@ -9,6 +9,7 @@ import net.sourceforge.groboutils.junit.v1.TestRunnable;
 import org.junit.Test;
 
 /**
+ * synchronized测试用例
  * @auther mynawang
  * @create 2016-09-28 16:41
  */
