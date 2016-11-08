@@ -21,6 +21,7 @@ com.sedion.mynawang
 │   ├── _synchrinozed（同步锁）
 │   │   ├── pra1_safewithout                       方法内变量线程安全
 │   │   ├── pra2_safewithsynchronized              加synchronized保证实例变量线程安全
+│   │   ├── pra3_twoobjtwolock                     synchronized多个对象多个锁
 │   ├── _volatile（volatile关键字）
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
