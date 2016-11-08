@@ -4,6 +4,7 @@ import com.sedion.mynawang.advanced._synchronized.pra1_safewithout.SafeWithNoSyn
 import com.sedion.mynawang.advanced._synchronized.pra1_safewithout.ThreadA;
 import com.sedion.mynawang.advanced._synchronized.pra1_safewithout.ThreadB;
 import com.sedion.mynawang.advanced._synchronized.pra2_safewithsynchronized.SafeWithSynchronized;
+import com.sedion.mynawang.advanced._synchronized.pra3_twoobjtwolock.TwoObjTwoLock;
 import net.sourceforge.groboutils.junit.v1.MultiThreadedTestRunner;
 import net.sourceforge.groboutils.junit.v1.TestRunnable;
 import org.junit.Test;
@@ -82,7 +83,32 @@ public class PraSynchronized {
         }
     }
 
+    /**
+     * pra3_twoobjtwolock
+     * 打印结果：
+     * mynawang set over
+     * other set over
+     * mynawang2 num=200
+     * mynawang num=100
+     */
+    public void testPra3() {
+        try {
+            TwoObjTwoLock twoObjTwoLock1 = new TwoObjTwoLock();
+            TwoObjTwoLock twoObjTwoLock2 = new TwoObjTwoLock();
+            com.sedion.mynawang.advanced._synchronized.pra3_twoobjtwolock.ThreadA threadA = new com.sedion.mynawang.advanced._synchronized.pra3_twoobjtwolock.ThreadA(twoObjTwoLock1);
+            threadA.start();
+            com.sedion.mynawang.advanced._synchronized.pra3_twoobjtwolock.ThreadB threadB = new com.sedion.mynawang.advanced._synchronized.pra3_twoobjtwolock.ThreadB(twoObjTwoLock2);
+            threadB.start();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+    }
 
+
+    public static void main(String[] args) {
+        PraSynchronized praSynchronized = new PraSynchronized();
+        praSynchronized.testPra3();
+    }
 
 
 }

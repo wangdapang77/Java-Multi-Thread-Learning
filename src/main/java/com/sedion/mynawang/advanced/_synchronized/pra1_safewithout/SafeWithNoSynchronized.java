@@ -19,6 +19,11 @@ public class SafeWithNoSynchronized {
      * 其他线程才可使用，不会出现数据不一致或者数据污染。
      */
 
+
+    /**
+     * 方法内的私有变量，不存在线程安全问题。非线程安全问题存在于实例变量（全局变量）中
+     * @param userName
+     */
     public void addNum(String userName) {
         try {
             int num = 0;
