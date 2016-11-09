@@ -6,6 +6,7 @@ import com.sedion.mynawang.advanced._synchronized.pra1_safewithout.ThreadB;
 import com.sedion.mynawang.advanced._synchronized.pra2_safewithsynchronized.SafeWithSynchronized;
 import com.sedion.mynawang.advanced._synchronized.pra3_twoobjtwolock.TwoObjTwoLock;
 import com.sedion.mynawang.advanced._synchronized.pra4_synchrinozedmethodlockobj.MyObject;
+import com.sedion.mynawang.advanced._synchronized.pra5_dirtyread.PublicVal;
 import net.sourceforge.groboutils.junit.v1.MultiThreadedTestRunner;
 import net.sourceforge.groboutils.junit.v1.TestRunnable;
 import org.junit.Test;
@@ -186,9 +187,50 @@ public class PraSynchronized {
         threadE.start();
     }
 
+    /**
+     * pra5_dirtyread
+     * 打印结果
+     * getVal method thread name = main userName = TEST userPwd = MYNAWANG_PWD
+     * setVal method thread name = Thread-0 userName = TEST userPwd = TEST_PWD
+     * userPwd未被更新，出现脏读
+     */
+    public void testPra5_1() {
+        try {
+            PublicVal publicVal = new PublicVal();
+            com.sedion.mynawang.advanced._synchronized.pra5_dirtyread.ThreadA threadA =
+                    new com.sedion.mynawang.advanced._synchronized.pra5_dirtyread.ThreadA(publicVal);
+            threadA.start();
+            Thread.sleep(200);
+            publicVal.getVal();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * pra5_dirtyread
+     * 打印结果
+     * setVal method thread name = Thread-0 userName = TEST userPwd = TEST_PWD
+     * getVal method thread name = main userName = TEST userPwd = TEST_PWD
+     *
+     * 加了synchronized后的方法，getVal和setVal2将按顺序执行
+     */
+    public void testPra5_2() {
+        try {
+            PublicVal publicVal = new PublicVal();
+            com.sedion.mynawang.advanced._synchronized.pra5_dirtyread.ThreadA threadA =
+                    new com.sedion.mynawang.advanced._synchronized.pra5_dirtyread.ThreadA(publicVal);
+            threadA.start();
+            Thread.sleep(200);
+            publicVal.getVal2();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         PraSynchronized praSynchronized = new PraSynchronized();
-        praSynchronized.testPra4_4();
+        praSynchronized.testPra5_1();
     }
 
 
