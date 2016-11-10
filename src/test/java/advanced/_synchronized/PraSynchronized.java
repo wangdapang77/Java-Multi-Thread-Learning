@@ -7,6 +7,7 @@ import com.sedion.mynawang.advanced._synchronized.pra2_safewithsynchronized.Safe
 import com.sedion.mynawang.advanced._synchronized.pra3_twoobjtwolock.TwoObjTwoLock;
 import com.sedion.mynawang.advanced._synchronized.pra4_synchrinozedmethodlockobj.MyObject;
 import com.sedion.mynawang.advanced._synchronized.pra5_dirtyread.PublicVal;
+import com.sedion.mynawang.advanced._synchronized.pra7_throwexceptionnolock.ExceptionMethod;
 import net.sourceforge.groboutils.junit.v1.MultiThreadedTestRunner;
 import net.sourceforge.groboutils.junit.v1.TestRunnable;
 import org.junit.Test;
@@ -241,15 +242,39 @@ public class PraSynchronized {
         threadA.start();
     }
 
+    /**
+     * pra6_lockin
+     */
     public void testPra6_2() {
         com.sedion.mynawang.advanced._synchronized.pra6_lockin.ThreadB threadB =
                 new com.sedion.mynawang.advanced._synchronized.pra6_lockin.ThreadB();
         threadB.start();
     }
 
+    /**
+     * pra7_throwexceptionnolock
+     */
+    public void testPra7() {
+        try {
+            ExceptionMethod exceptionMethod = new ExceptionMethod();
+            com.sedion.mynawang.advanced._synchronized.pra7_throwexceptionnolock.ThreadA threadA =
+                    new com.sedion.mynawang.advanced._synchronized.pra7_throwexceptionnolock.ThreadA(exceptionMethod);
+            threadA.setName("a");
+            threadA.start();
+            Thread.sleep(500);
+
+            com.sedion.mynawang.advanced._synchronized.pra7_throwexceptionnolock.ThreadB threadB =
+                    new com.sedion.mynawang.advanced._synchronized.pra7_throwexceptionnolock.ThreadB(exceptionMethod);
+            threadB.setName("b");
+            threadB.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         PraSynchronized praSynchronized = new PraSynchronized();
-        praSynchronized.testPra6_2();
+        praSynchronized.testPra7();
     }
 
 
