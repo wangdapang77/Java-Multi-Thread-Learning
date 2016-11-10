@@ -228,9 +228,28 @@ public class PraSynchronized {
         }
     }
 
+    /**
+     * pra6_lockin
+     * 打印结果
+     * service1
+     * service2
+     * service3
+     */
+    public void testPra6_1() {
+        com.sedion.mynawang.advanced._synchronized.pra6_lockin.ThreadA threadA =
+                new com.sedion.mynawang.advanced._synchronized.pra6_lockin.ThreadA();
+        threadA.start();
+    }
+
+    public void testPra6_2() {
+        com.sedion.mynawang.advanced._synchronized.pra6_lockin.ThreadB threadB =
+                new com.sedion.mynawang.advanced._synchronized.pra6_lockin.ThreadB();
+        threadB.start();
+    }
+
     public static void main(String[] args) {
         PraSynchronized praSynchronized = new PraSynchronized();
-        praSynchronized.testPra5_1();
+        praSynchronized.testPra6_2();
     }
 
 

@@ -24,6 +24,7 @@ com.sedion.mynawang
 │   │   ├── pra3_twoobjtwolock                     synchronized多个对象多个锁
 │   │   ├── pra4_synchrinozedmethodlockobj         synchronized方法与锁对象
 │   │   ├── pra5_dirtyread                         synchronized防止脏读
+│   │   ├── pra6_lockin                            synchronized锁重入
 │   ├── _volatile（volatile关键字）
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
