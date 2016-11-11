@@ -8,6 +8,7 @@ import com.sedion.mynawang.advanced._synchronized.pra3_twoobjtwolock.TwoObjTwoLo
 import com.sedion.mynawang.advanced._synchronized.pra4_synchrinozedmethodlockobj.MyObject;
 import com.sedion.mynawang.advanced._synchronized.pra5_dirtyread.PublicVal;
 import com.sedion.mynawang.advanced._synchronized.pra7_throwexceptionnolock.ExceptionMethod;
+import com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.SynNotExtendsSub;
 import net.sourceforge.groboutils.junit.v1.MultiThreadedTestRunner;
 import net.sourceforge.groboutils.junit.v1.TestRunnable;
 import org.junit.Test;
@@ -272,9 +273,43 @@ public class PraSynchronized {
         }
     }
 
+    /**
+     * pra8_synnotextends
+     * 非同步调用
+     */
+    public void testPra8_1() {
+        SynNotExtendsSub synNotExtendsSub = new SynNotExtendsSub();
+        com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.ThreadA threadA =
+                new com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.ThreadA(synNotExtendsSub);
+        threadA.setName("Thread-A");
+        threadA.start();
+
+        com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.ThreadB threadB =
+                new com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.ThreadB(synNotExtendsSub);
+        threadB.setName("Thread-B");
+        threadB.start();
+    }
+
+    /**
+     * pra8_synnotextends
+     * 同步调用
+     */
+    public void testPra8_2() {
+        SynNotExtendsSub synNotExtendsSub = new SynNotExtendsSub();
+        com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.ThreadC threadC =
+                new com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.ThreadC(synNotExtendsSub);
+        threadC.setName("Thread-C");
+        threadC.start();
+
+        com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.ThreadD threadD =
+                new com.sedion.mynawang.advanced._synchronized.pra8_synnotextends.ThreadD(synNotExtendsSub);
+        threadD.setName("Thread-D");
+        threadD.start();
+    }
+
     public static void main(String[] args) {
         PraSynchronized praSynchronized = new PraSynchronized();
-        praSynchronized.testPra7();
+        praSynchronized.testPra8_2();
     }
 
 
