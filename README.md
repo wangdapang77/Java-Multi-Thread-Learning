@@ -28,6 +28,7 @@ com.sedion.mynawang
 │   │   ├── pra7_throwexceptionnolock              发生异常，锁自动释放
 │   │   ├── pra8_synnotextends                     同步不具有继承性
 │   ├── _volatile（volatile关键字）
+│   │   ├── pra1_dropdead                          死循环极及其解决方案
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
 ```
