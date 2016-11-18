@@ -5,6 +5,8 @@ import com.sedion.mynawang.advanced._volatile.pra1_dropdead.PrintServerThread;
 import com.sedion.mynawang.advanced._volatile.pra1_dropdead.PrintServerVolatile;
 import com.sedion.mynawang.advanced._volatile.pra2_atomicity.VolatileThread;
 import com.sedion.mynawang.advanced._volatile.pra2_atomicity.VolatileThreadSyn;
+import com.sedion.mynawang.advanced._volatile.pra3_atomicinteger.AtomicIntegerNoSafeTest;
+import com.sedion.mynawang.advanced._volatile.pra3_atomicinteger.AtomicIntegerTest;
 
 /**
  * Volatile 测试用例
@@ -63,10 +65,44 @@ public class PraVolatile {
         }
     }
 
+    public void testPra3_1() {
+        AtomicIntegerTest atomicIntegerTest = new AtomicIntegerTest();
+        Thread thread1 = new Thread(atomicIntegerTest);
+        thread1.start();
+
+        Thread thread2 = new Thread(atomicIntegerTest);
+        thread2.start();
+
+        Thread thread3 = new Thread(atomicIntegerTest);
+        thread3.start();
+
+        Thread thread4 = new Thread(atomicIntegerTest);
+        thread4.start();
+
+        Thread thread5 = new Thread(atomicIntegerTest);
+        thread5.start();
+    }
+
+    public void testPra3_2() {
+        AtomicIntegerNoSafeTest atomicIntegerNoSafeTest = new AtomicIntegerNoSafeTest();
+        Thread[] threads = new Thread[5];
+
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(atomicIntegerNoSafeTest);
+            threads[i].start();
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(atomicIntegerNoSafeTest.count.get());
+    }
+
 
     public static void main(String[] args) {
         PraVolatile praVolatile = new PraVolatile();
-        praVolatile.testPra2_2();
+        praVolatile.testPra3_2();
     }
 
 

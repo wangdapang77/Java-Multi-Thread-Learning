@@ -30,6 +30,7 @@ com.sedion.mynawang
 │   ├── _volatile（volatile关键字）
 │   │   ├── pra1_dropdead                          死循环极及其解决方案
 │   │   ├── pra2_atomicity                         volatile原子性问题
+│   │   ├── pra3_atomicinteger                     AtomicInteger原子类的安全与不安全
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
 ```
