@@ -3,6 +3,8 @@ package advanced._volatile;
 import com.sedion.mynawang.advanced._volatile.pra1_dropdead.PrintServer;
 import com.sedion.mynawang.advanced._volatile.pra1_dropdead.PrintServerThread;
 import com.sedion.mynawang.advanced._volatile.pra1_dropdead.PrintServerVolatile;
+import com.sedion.mynawang.advanced._volatile.pra2_atomicity.VolatileThread;
+import com.sedion.mynawang.advanced._volatile.pra2_atomicity.VolatileThreadSyn;
 
 /**
  * Volatile 测试用例
@@ -39,9 +41,32 @@ public class PraVolatile {
     }
 
 
+    public void testPra2_1() {
+        VolatileThread[] threadsArray = new VolatileThread[100];
+        for (int i = 0; i < 100; i++) {
+            threadsArray[i] = new VolatileThread();
+        }
+
+        for (int i = 0; i < 100; i++) {
+            threadsArray[i].start();
+        }
+    }
+
+    public void testPra2_2() {
+        VolatileThreadSyn[] threadsArray = new VolatileThreadSyn[100];
+        for (int i = 0; i < 100; i++) {
+            threadsArray[i] = new VolatileThreadSyn();
+        }
+
+        for (int i = 0; i < 100; i++) {
+            threadsArray[i].start();
+        }
+    }
+
+
     public static void main(String[] args) {
         PraVolatile praVolatile = new PraVolatile();
-        praVolatile.testPra1_3();
+        praVolatile.testPra2_2();
     }
 
 

@@ -29,6 +29,7 @@ com.sedion.mynawang
 │   │   ├── pra8_synnotextends                     同步不具有继承性
 │   ├── _volatile（volatile关键字）
 │   │   ├── pra1_dropdead                          死循环极及其解决方案
+│   │   ├── pra2_atomicity                         volatile原子性问题
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
 ```
