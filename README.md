@@ -19,20 +19,22 @@ com.sedion.mynawang
 │   └── YieldThread                                 放弃当前线程CPU资源
 ├── advanced（多线程重要知识点）
 │   ├── _synchrinozed（同步锁）
-│   │   ├── pra1_safewithout                       方法内变量线程安全
-│   │   ├── pra2_safewithsynchronized              加synchronized保证实例变量线程安全
-│   │   ├── pra3_twoobjtwolock                     synchronized多个对象多个锁
-│   │   ├── pra4_synchrinozedmethodlockobj         synchronized方法与锁对象
-│   │   ├── pra5_dirtyread                         synchronized防止脏读
-│   │   ├── pra6_lockin                            synchronized锁重入
-│   │   ├── pra7_throwexceptionnolock              发生异常，锁自动释放
-│   │   ├── pra8_synnotextends                     同步不具有继承性
+│   │   ├── pra1_safewithout                        方法内变量线程安全
+│   │   ├── pra2_safewithsynchronized               加synchronized保证实例变量线程安全
+│   │   ├── pra3_twoobjtwolock                      synchronized多个对象多个锁
+│   │   ├── pra4_synchrinozedmethodlockobj          synchronized方法与锁对象
+│   │   ├── pra5_dirtyread                          synchronized防止脏读
+│   │   ├── pra6_lockin                             synchronized锁重入
+│   │   ├── pra7_throwexceptionnolock               发生异常，锁自动释放
+│   │   ├── pra8_synnotextends                      同步不具有继承性
 │   ├── _volatile（volatile关键字）
-│   │   ├── pra1_dropdead                          死循环极及其解决方案
-│   │   ├── pra2_atomicity                         volatile原子性问题
-│   │   ├── pra3_atomicinteger                     AtomicInteger原子类的安全与不安全
+│   │   ├── pra1_dropdead                           死循环极及其解决方案
+│   │   ├── pra2_atomicity                          volatile原子性问题
+│   │   ├── pra3_atomicinteger                      AtomicInteger原子类的安全与不安全
+│   ├── _interthread_communication（线程间通信）
+│   │   ├── pra1_nowaitnotify                       不使用等待通知使线程通信
 ├── util（多线程工具）
-│   ├── SleepUtils                                  休眠工具
+│   ├── SleepUtils                                   休眠工具
 ```
 
 

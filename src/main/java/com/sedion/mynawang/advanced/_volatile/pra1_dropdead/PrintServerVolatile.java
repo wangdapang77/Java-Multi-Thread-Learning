@@ -23,6 +23,7 @@ public class PrintServerVolatile extends Thread{
                 System.out.println("run printMethod threadName = " + Thread.currentThread().getName());
                 Thread.sleep(1000);
             }
+
             System.out.println("线程被停止了");
         } catch (InterruptedException e) {
             e.printStackTrace();
