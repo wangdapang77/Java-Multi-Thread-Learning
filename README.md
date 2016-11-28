@@ -33,6 +33,7 @@ com.sedion.mynawang
 │   │   ├── pra3_atomicinteger                      AtomicInteger原子类的安全与不安全
 │   ├── _interthread_communication（线程间通信）
 │   │   ├── pra1_nowaitnotify                       不使用等待通知使线程通信
+│   │   ├── pra2_withwaitnotify                     正确使用等待通知使线程通信
 ├── util（多线程工具）
 │   ├── SleepUtils                                   休眠工具
 ```
