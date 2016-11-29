@@ -34,6 +34,7 @@ com.sedion.mynawang
 │   ├── _interthread_communication（线程间通信）
 │   │   ├── pra1_nowaitnotify                       不使用等待通知使线程通信
 │   │   ├── pra2_withwaitnotify                     正确使用等待通知使线程通信
+│   │   ├── pra3_notifyall                          循序渐进唤醒所有等待线程
 ├── util（多线程工具）
 │   ├── SleepUtils                                   休眠工具
 ```

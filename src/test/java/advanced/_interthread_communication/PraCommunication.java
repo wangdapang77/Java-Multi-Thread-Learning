@@ -5,6 +5,10 @@ import com.sedion.mynawang.advanced._interthread_communication.pra1_nowaitnotify
 import com.sedion.mynawang.advanced._interthread_communication.pra1_nowaitnotify.ThreadB;
 import com.sedion.mynawang.advanced._interthread_communication.pra2_withwaitnotify.BugUseWait;
 import com.sedion.mynawang.advanced._interthread_communication.pra2_withwaitnotify.WaitWithSyn;
+import com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.NotifyAllThread;
+import com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.NotifyMoreThread;
+import com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.NotifyOneThread;
+import com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadC;
 
 /**
  * @auther mynawang
@@ -47,9 +51,78 @@ public class PraCommunication {
         }
     }
 
+    public void testPra3_1() {
+        Object lock = new Object();
+        com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadA threadA =
+                new com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadA(lock);
+        threadA.start();
+
+        com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadB threadB =
+                new com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadB(lock);
+        threadB.start();
+
+        ThreadC threadC = new ThreadC(lock);
+        threadC.start();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        NotifyOneThread notifyOneThread = new NotifyOneThread(lock);
+        notifyOneThread.start();
+    }
+
+    public void testPra3_2() {
+        Object lock = new Object();
+        com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadA threadA =
+                new com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadA(lock);
+        threadA.start();
+
+        com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadB threadB =
+                new com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadB(lock);
+        threadB.start();
+
+        ThreadC threadC = new ThreadC(lock);
+        threadC.start();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        NotifyMoreThread notifyMoreThread = new NotifyMoreThread(lock);
+        notifyMoreThread.start();
+    }
+
+    public void testPra3_3() {
+        Object lock = new Object();
+        com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadA threadA =
+                new com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadA(lock);
+        threadA.start();
+
+        com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadB threadB =
+                new com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadB(lock);
+        threadB.start();
+
+        ThreadC threadC = new ThreadC(lock);
+        threadC.start();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        NotifyAllThread notifyAllThread = new NotifyAllThread(lock);
+        notifyAllThread.start();
+    }
+
     public static void main(String[] args) {
         PraCommunication praCommunication = new PraCommunication();
-        praCommunication.testPra2_3();
+        praCommunication.testPra3_3();
     }
 
 
