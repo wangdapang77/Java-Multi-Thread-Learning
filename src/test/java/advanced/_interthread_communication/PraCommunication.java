@@ -120,9 +120,22 @@ public class PraCommunication {
         notifyAllThread.start();
     }
 
+    public void testPra4_1() {
+        try {
+            Object lockObj = new Object();
+            com.sedion.mynawang.advanced._interthread_communication.pra4_waitwithinterrupt.ThreadA threadA =
+                    new com.sedion.mynawang.advanced._interthread_communication.pra4_waitwithinterrupt.ThreadA(lockObj);
+            threadA.start();
+            Thread.sleep(5000);
+            threadA.interrupt();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         PraCommunication praCommunication = new PraCommunication();
-        praCommunication.testPra3_3();
+        praCommunication.testPra4_1();
     }
 
 
