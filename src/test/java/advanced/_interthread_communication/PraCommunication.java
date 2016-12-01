@@ -9,6 +9,10 @@ import com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.No
 import com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.NotifyMoreThread;
 import com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.NotifyOneThread;
 import com.sedion.mynawang.advanced._interthread_communication.pra3_notifyall.ThreadC;
+import com.sedion.mynawang.advanced._interthread_communication.pra5_producerwithconsumer.procons_pra1_value.ConsumerA;
+import com.sedion.mynawang.advanced._interthread_communication.pra5_producerwithconsumer.procons_pra1_value.ProducerA;
+import com.sedion.mynawang.advanced._interthread_communication.pra5_producerwithconsumer.procons_pra1_value.ThreadCA;
+import com.sedion.mynawang.advanced._interthread_communication.pra5_producerwithconsumer.procons_pra1_value.ThreadPA;
 
 /**
  * @auther mynawang
@@ -133,9 +137,54 @@ public class PraCommunication {
         }
     }
 
+    public void testPra5_1() {
+        String objStr = new String("");
+        ProducerA producerA = new ProducerA(objStr);
+        ConsumerA comsumerA = new ConsumerA(objStr);
+
+        ThreadPA threadPA = new ThreadPA(producerA);
+        ThreadCA threadCA = new ThreadCA(comsumerA);
+        threadPA.start();
+        threadCA.start();
+    }
+
+
+    public void testPra5_2() {
+        String objStr = new String("");
+        ProducerA producerA = new ProducerA(objStr);
+        ConsumerA comsumerA = new ConsumerA(objStr);
+        ThreadPA[] threadPAs = new ThreadPA[2];
+        ThreadCA[] threadCAs = new ThreadCA[2];
+
+        try {
+            for (int i = 0; i < 2; i++) {
+                threadPAs[i] = new ThreadPA(producerA);
+                threadPAs[i].setName("生产者" + (i + 1));
+
+                threadCAs[i] = new ThreadCA(comsumerA);
+                threadCAs[i].setName("消费者" + (i + 1));
+
+                threadPAs[i].start();
+                threadCAs[i].start();
+            }
+
+            Thread.sleep(5000);
+
+            Thread[] threadArray = new Thread[Thread.currentThread().getThreadGroup().activeCount()];
+            Thread.currentThread().getThreadGroup().enumerate(threadArray);
+            for (int i = 0; i < threadArray.length; i++) {
+                System.out.println(threadArray[i].getName() + " " + threadArray[i].getState());
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void main(String[] args) {
         PraCommunication praCommunication = new PraCommunication();
-        praCommunication.testPra4_1();
+        praCommunication.testPra5_2();
     }
 
 
