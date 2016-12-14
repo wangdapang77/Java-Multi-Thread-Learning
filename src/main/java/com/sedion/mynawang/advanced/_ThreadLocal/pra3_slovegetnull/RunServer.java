@@ -4,7 +4,7 @@ package com.sedion.mynawang.advanced._threadlocal.pra3_slovegetnull;
  * @auther mynawang
  * @create 2016-12-14 11:23
  */
-public class RunClass {
+public class RunServer {
     public static ThreadLocalExpand threadLocalExpand = new ThreadLocalExpand();
 
     public static void main(String[] args) {
