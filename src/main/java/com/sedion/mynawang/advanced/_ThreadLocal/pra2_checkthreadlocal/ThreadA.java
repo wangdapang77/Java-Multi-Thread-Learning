@@ -22,4 +22,9 @@ public class ThreadA extends Thread{
             e.printStackTrace();
         }
     }
+
+
+    /**
+     * PraThreadLocal类中的testPra2方法说明每个线程都拥有自己的值，证明了不同线程间的隔离性
+     */
 }
