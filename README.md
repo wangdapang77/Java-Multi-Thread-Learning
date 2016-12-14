@@ -13,8 +13,8 @@ com.sedion.mynawang
 │   ├── StatusThread                                线程状态
 │   ├── DaemonThread                                守护线程
 │   ├── SourceThread                                Thread线程源码阅读
-│   ├── InterruptedThread                           线程中断
 │   ├── SuspendThread                               暂停线程（过期）
+│   ├── InterruptedThread                           线程中断
 │   ├── StopThread                                  停止线程（过期）
 │   └── YieldThread                                 放弃当前线程CPU资源
 ├── advanced（多线程重要知识点）
@@ -38,6 +38,10 @@ com.sedion.mynawang
 │   │   ├── pra4_waitwithinterrupt                  线程wait时调用interrupt报异常
 │   │   ├── pra5_producerwithconsumer               生产者消费者
 │   │   │   ├── procons_pra1_value                 生产者消费者一对多和多对多情况演示
+│   ├── _threadlocal(ThreadLocal关键字)
+│   │   ├── pra1_discoverthreadlocal                初识ThreadLocal
+│   │   ├── pra2_checkthreadlocal                   验证线程变量的隔离性
+│   │   ├── pra3_slovegetnull                       解决get()默认值为null的问题
 ├── util（多线程工具）
 │   ├── SleepUtils                                   休眠工具
 ```
