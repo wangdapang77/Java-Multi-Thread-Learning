@@ -43,6 +43,9 @@ com.sedion.mynawang
 │   │   ├── pra2_checkthreadlocal                   验证线程变量的隔离性
 │   │   ├── pra3_slovegetnull                       解决get()默认值为null的问题
 │   │   ├── pra4_inheritablethreadlocal             threadlocal子类inheritablethreadlocal可以让子线程取得父线程内的值
+│   ├── _lock(lock实现同步效果)
+│   │   ├── pra1_reentranlock                       lock同步
+│   │   ├── pra2_withcondition                      Lock对象中使用ReentrantLock和Condition实现等待通知功能
 ├── util（多线程工具）
 │   ├── SleepUtils                                   休眠工具
 ```

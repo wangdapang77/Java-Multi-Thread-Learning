@@ -148,7 +148,6 @@ public class PraCommunication {
         threadCA.start();
     }
 
-
     public void testPra5_2() {
         String objStr = new String("");
         ProducerA producerA = new ProducerA(objStr);
