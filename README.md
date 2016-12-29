@@ -37,7 +37,7 @@ com.sedion.mynawang
 │   │   ├── pra3_notifyall                          循序渐进唤醒所有等待线程
 │   │   ├── pra4_waitwithinterrupt                  线程wait时调用interrupt报异常
 │   │   ├── pra5_producerwithconsumer               生产者消费者
-│   │   │   ├── procons_pra1_value                 生产者消费者一对多和多对多情况演示
+│   │   │   ├── procons_pra1_value                  生产者消费者一对多和多对多情况演示
 │   ├── _threadlocal(ThreadLocal关键字)
 │   │   ├── pra1_discoverthreadlocal                初识ThreadLocal
 │   │   ├── pra2_checkthreadlocal                   验证线程变量的隔离性
@@ -46,8 +46,9 @@ com.sedion.mynawang
 │   ├── _lock(lock实现同步效果)
 │   │   ├── pra1_reentranlock                       lock同步
 │   │   ├── pra2_withcondition                      Lock对象中使用ReentrantLock和Condition实现等待通知功能
+│   │   ├── pra3_notifymore                         指定线程唤醒，和唤醒所有线程的方式的比较
 ├── util（多线程工具）
-│   ├── SleepUtils                                   休眠工具
+│   ├── SleepUtils                                  休眠工具
 ```
 
 

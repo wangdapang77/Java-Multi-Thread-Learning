@@ -3,6 +3,9 @@ package advanced._lock;
 import com.sedion.mynawang.advanced._lock.pra1_reentranlock.MyServer;
 import com.sedion.mynawang.advanced._lock.pra1_reentranlock.MyThread;
 import com.sedion.mynawang.advanced._lock.pra2_withcondition.*;
+import com.sedion.mynawang.advanced._lock.pra2_withcondition.ThreadA;
+import com.sedion.mynawang.advanced._lock.pra2_withcondition.ThreadB;
+import com.sedion.mynawang.advanced._lock.pra3_notifymore.*;
 
 /**
  * @auther mynawang
@@ -50,8 +53,28 @@ public class PraLock {
         }
     }
 
+    public void testPra3() {
+        com.sedion.mynawang.advanced._lock.pra3_notifymore.MyServer myServer =
+                new com.sedion.mynawang.advanced._lock.pra3_notifymore.MyServer();
+        com.sedion.mynawang.advanced._lock.pra3_notifymore.ThreadA threadA =
+                new com.sedion.mynawang.advanced._lock.pra3_notifymore.ThreadA(myServer);
+        threadA.setName("threadA");
+        threadA.start();
+
+        com.sedion.mynawang.advanced._lock.pra3_notifymore.ThreadB threadB =
+                new com.sedion.mynawang.advanced._lock.pra3_notifymore.ThreadB(myServer);
+        threadB.setName("threadB");
+        threadB.start();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        myServer.signalAll_A();
+    }
+
     public static void main(String[] args) {
         PraLock praLock = new PraLock();
-        praLock.testPra2_3();
+        praLock.testPra3();
     }
 }
