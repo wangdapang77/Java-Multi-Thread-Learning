@@ -26,11 +26,11 @@ com.sedion.mynawang
 │   │   ├── pra5_dirtyread                          synchronized防止脏读
 │   │   ├── pra6_lockin                             synchronized锁重入
 │   │   ├── pra7_throwexceptionnolock               发生异常，锁自动释放
-│   │   ├── pra8_synnotextends                      同步不具有继承性
+│   │   └── pra8_synnotextends                      同步不具有继承性
 │   ├── _volatile（volatile关键字）
 │   │   ├── pra1_dropdead                           死循环极及其解决方案
 │   │   ├── pra2_atomicity                          volatile原子性问题
-│   │   ├── pra3_atomicinteger                      AtomicInteger原子类的安全与不安全
+│   │   └── pra3_atomicinteger                      AtomicInteger原子类的安全与不安全
 │   ├── _interthread_communication（线程间通信）
 │   │   ├── pra1_nowaitnotify                       不使用等待通知使线程通信
 │   │   ├── pra2_withwaitnotify                     正确使用等待通知使线程通信
@@ -42,11 +42,15 @@ com.sedion.mynawang
 │   │   ├── pra1_discoverthreadlocal                初识ThreadLocal
 │   │   ├── pra2_checkthreadlocal                   验证线程变量的隔离性
 │   │   ├── pra3_slovegetnull                       解决get()默认值为null的问题
-│   │   ├── pra4_inheritablethreadlocal             threadlocal子类inheritablethreadlocal可以让子线程取得父线程内的值
+│   │   └── pra4_inheritablethreadlocal             threadlocal子类inheritablethreadlocal可以让子线程取得父线程内的值
 │   ├── _lock(lock实现同步效果)
 │   │   ├── pra1_reentranlock                       lock同步
 │   │   ├── pra2_withcondition                      Lock对象中使用ReentrantLock和Condition实现等待通知功能
 │   │   ├── pra3_notifymore                         指定线程唤醒，和唤醒所有线程的方式的比较
+│   ├── _threadpool(线程池)
+│   │   ├── pra1_threadpool4ways                    四种Java线程池用法
+│   │   ├── 
+│   │   └── 
 ├── util（多线程工具）
 │   ├── SleepUtils                                  休眠工具
 ```
