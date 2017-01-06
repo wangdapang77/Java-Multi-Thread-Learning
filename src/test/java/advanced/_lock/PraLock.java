@@ -5,7 +5,9 @@ import com.sedion.mynawang.advanced._lock.pra1_reentranlock.MyThread;
 import com.sedion.mynawang.advanced._lock.pra2_withcondition.*;
 import com.sedion.mynawang.advanced._lock.pra2_withcondition.ThreadA;
 import com.sedion.mynawang.advanced._lock.pra2_withcondition.ThreadB;
-import com.sedion.mynawang.advanced._lock.pra3_notifymore.*;
+import com.sedion.mynawang.advanced._lock.pra5_getmethod.MyServerHoldCount;
+import com.sedion.mynawang.advanced._lock.pra5_getmethod.MyServerQueueLength;
+import com.sedion.mynawang.advanced._lock.pra5_getmethod.MyServerWaitQueueLength;
 
 /**
  * @auther mynawang
@@ -73,8 +75,115 @@ public class PraLock {
         myServer.signalAll_A();
     }
 
+    public void testPra4_1() {
+        final com.sedion.mynawang.advanced._lock.pra4_fairnofair.MyServer myServer =
+                new com.sedion.mynawang.advanced._lock.pra4_fairnofair.MyServer(true);
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("********线程" + Thread.currentThread().getName() + "运行了");
+                myServer.testMethod();
+            }
+        };
+
+        Thread[] threadArray = new Thread[10];
+        for (int i = 0; i < 10; i++) {
+            threadArray[i] = new Thread(runnable);
+        }
+
+        for (int i = 0; i < 10; i++) {
+            threadArray[i].start();
+        }
+    }
+
+    public void testPra4_2() {
+        final com.sedion.mynawang.advanced._lock.pra4_fairnofair.MyServer myServer =
+                new com.sedion.mynawang.advanced._lock.pra4_fairnofair.MyServer(false);
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("********线程" + Thread.currentThread().getName() + "运行了");
+                myServer.testMethod();
+            }
+        };
+
+        Thread[] threadArray = new Thread[10];
+        for (int i = 0; i < 10; i++) {
+            threadArray[i] = new Thread(runnable);
+        }
+
+        for (int i = 0; i < 10; i++) {
+            threadArray[i].start();
+        }
+    }
+
+
+    public void testPra5_1() {
+        MyServerHoldCount myServer = new MyServerHoldCount();
+        myServer.testMethod1();
+    }
+
+    public void testPra5_2() {
+        final MyServerQueueLength myServerQueueLength = new MyServerQueueLength();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerQueueLength.testMethod1();
+            }
+        };
+
+        Thread[] threadArray = new Thread[10];
+        for (int i = 0; i < 10; i++) {
+            threadArray[i] = new Thread(runnable);
+        }
+
+        for (int i = 0; i < 10; i++) {
+            threadArray[i].start();
+        }
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("线程数： " + myServerQueueLength.reentrantLock.getQueueLength());
+
+    }
+
+
+    public void testPra5_3() {
+        final MyServerWaitQueueLength myServerWaitQueueLength = new MyServerWaitQueueLength();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerWaitQueueLength.waitMethod();
+            }
+        };
+
+        Thread[] threadArray = new Thread[10];
+        for (int i = 0; i < 10; i++) {
+            threadArray[i] = new Thread(runnable);
+        }
+
+        for (int i = 0; i < 10; i++) {
+            threadArray[i].start();
+        }
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        myServerWaitQueueLength.nofityMethod();
+
+    }
+
     public static void main(String[] args) {
         PraLock praLock = new PraLock();
-        praLock.testPra3();
+        praLock.testPra5_2();
     }
 }

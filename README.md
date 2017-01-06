@@ -47,6 +47,8 @@ com.sedion.mynawang
 │   │   ├── pra1_reentranlock                       lock同步
 │   │   ├── pra2_withcondition                      Lock对象中使用ReentrantLock和Condition实现等待通知功能
 │   │   ├── pra3_notifymore                         指定线程唤醒，和唤醒所有线程的方式的比较
+│   │   ├── pra4_fairnofair                         公平锁与非公平锁
+│   │   ├── pra5_getmethod                          当前线程锁定的次数、等待获取锁的线程数、同一个condition下wait的线程数量
 │   ├── _threadpool(线程池)
 │   │   ├── pra1_threadpool4ways                    四种Java线程池用法
 │   │   ├── 
