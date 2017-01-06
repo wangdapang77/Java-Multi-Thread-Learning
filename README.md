@@ -49,6 +49,8 @@ com.sedion.mynawang
 │   │   ├── pra3_notifymore                         指定线程唤醒，和唤醒所有线程的方式的比较
 │   │   ├── pra4_fairnofair                         公平锁与非公平锁
 │   │   ├── pra5_getmethod                          当前线程锁定的次数、等待获取锁的线程数、同一个condition下wait的线程数量
+│   │   ├── pra6_hasmethod                          指定线程是否正在等待获取锁、是否有线程正在等待获取锁、否有线程condtion条件下正在等待锁
+│   │   ├── pra7_ismethod                           是否是公平锁判断、当前线程是否持有锁判断、任意线程是否持有锁判断
 │   ├── _threadpool(线程池)
 │   │   ├── pra1_threadpool4ways                    四种Java线程池用法
 │   │   ├── 

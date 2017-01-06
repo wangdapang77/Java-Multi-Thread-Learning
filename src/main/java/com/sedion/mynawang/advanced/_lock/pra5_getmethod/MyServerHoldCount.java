@@ -32,7 +32,7 @@ public class MyServerHoldCount {
 
 
     /**
-     * getHoldCount()作用是查询当前线程保持此锁定的个数，就是调用lock()方法的次数
+     * getHoldCount()作用是查询当前线程保持此锁定的个数，就是调用lock()方法的次数,也就是持有锁的数量
      */
 
 

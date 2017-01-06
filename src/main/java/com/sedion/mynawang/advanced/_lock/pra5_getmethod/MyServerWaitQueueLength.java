@@ -20,6 +20,7 @@ public class MyServerWaitQueueLength {
             e.printStackTrace();
         } finally {
             lock.unlock();
+            System.out.println("释放锁了");
         }
     }
 

@@ -8,6 +8,11 @@ import com.sedion.mynawang.advanced._lock.pra2_withcondition.ThreadB;
 import com.sedion.mynawang.advanced._lock.pra5_getmethod.MyServerHoldCount;
 import com.sedion.mynawang.advanced._lock.pra5_getmethod.MyServerQueueLength;
 import com.sedion.mynawang.advanced._lock.pra5_getmethod.MyServerWaitQueueLength;
+import com.sedion.mynawang.advanced._lock.pra6_hasmethod.MyServerQueuedThread;
+import com.sedion.mynawang.advanced._lock.pra6_hasmethod.MyServerWaiters;
+import com.sedion.mynawang.advanced._lock.pra7_ismethod.MyServerFair;
+import com.sedion.mynawang.advanced._lock.pra7_ismethod.MyServerHeldByCurrentThread;
+import com.sedion.mynawang.advanced._lock.pra7_ismethod.MyServerLocked;
 
 /**
  * @auther mynawang
@@ -182,8 +187,129 @@ public class PraLock {
 
     }
 
+
+    public void testPra6_1() {
+        final MyServerQueuedThread myServerQueuedThread = new MyServerQueuedThread();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerQueuedThread.waitMethod();
+            }
+        };
+        try {
+            Thread threadA = new Thread(runnable);
+            threadA.start();
+            Thread.sleep(500);
+
+            Thread threadB = new Thread(runnable);
+            threadB.start();
+            Thread.sleep(500);
+
+            System.out.println(myServerQueuedThread.lock.hasQueuedThread(threadA));
+            System.out.println(myServerQueuedThread.lock.hasQueuedThread(threadB));
+            System.out.println(myServerQueuedThread.lock.hasQueuedThreads());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void testPra6_2() {
+        final MyServerWaiters myServerWaiters = new MyServerWaiters();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerWaiters.waitMethod();
+            }
+        };
+
+        Thread[] threadArray = new Thread[10];
+        for (int i = 0; i < 10; i++) {
+            threadArray[i] = new Thread(runnable);
+        }
+
+        for (int i = 0; i < 10; i++) {
+            threadArray[i].start();
+        }
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        myServerWaiters.notifyMethod();
+    }
+
+
+    public void testPra7_1() {
+        final MyServerFair myServerFair = new MyServerFair(true);
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerFair.testMethod();
+            }
+        };
+
+        Thread thread = new Thread(runnable);
+        thread.start();
+
+        final MyServerFair myServerFair1 = new MyServerFair(false);
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerFair1.testMethod();
+            }
+        };
+
+        Thread thread1 = new Thread(runnable);
+        thread1.start();
+    }
+
+    public void testPra7_2() {
+        final MyServerHeldByCurrentThread myServerHeldByCurrentThread =
+                new MyServerHeldByCurrentThread(true);
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerHeldByCurrentThread.testMethod();
+            }
+        };
+
+        Thread thread = new Thread(runnable);
+        thread.start();
+
+    }
+
+    public void testPra7_3() {
+        final MyServerLocked myServerLocked = new MyServerLocked(true);
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerLocked.testMethod1();
+            }
+        };
+
+        Thread thread = new Thread(runnable);
+        thread.start();
+
+
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                myServerLocked.testMethod2();
+            }
+        };
+
+        Thread thread1 = new Thread(runnable);
+        thread1.start();
+
+    }
+
+
     public static void main(String[] args) {
         PraLock praLock = new PraLock();
-        praLock.testPra5_2();
+        praLock.testPra7_3();
     }
 }
