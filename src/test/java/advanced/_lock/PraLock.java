@@ -13,6 +13,7 @@ import com.sedion.mynawang.advanced._lock.pra6_hasmethod.MyServerWaiters;
 import com.sedion.mynawang.advanced._lock.pra7_ismethod.MyServerFair;
 import com.sedion.mynawang.advanced._lock.pra7_ismethod.MyServerHeldByCurrentThread;
 import com.sedion.mynawang.advanced._lock.pra7_ismethod.MyServerLocked;
+import com.sedion.mynawang.advanced._lock.pra8_reentrantreadwritelock.*;
 
 /**
  * @auther mynawang
@@ -308,8 +309,49 @@ public class PraLock {
     }
 
 
+    public void testPra8_1() {
+        ReadWriteLock_ReadReadShare readWriteLock_readReadShare = new ReadWriteLock_ReadReadShare();
+        ThreadReadReadShareA readReadShareThreadA = new ThreadReadReadShareA(readWriteLock_readReadShare);
+        readReadShareThreadA.setName("readreadshareA");
+
+        ThreadReadReadShareB readReadShareThreadB = new ThreadReadReadShareB(readWriteLock_readReadShare);
+        readReadShareThreadB.setName("readreadshareB");
+
+        readReadShareThreadA.start();
+        readReadShareThreadB.start();
+    }
+
+    public void testPra8_2() {
+        ReadWriteLock_WriteWriteMutex readWriteLock_writeWriteMutex = new ReadWriteLock_WriteWriteMutex();
+
+        ThreadWriteWriteMutexA writeWriteMutexThreadA = new ThreadWriteWriteMutexA(readWriteLock_writeWriteMutex);
+        writeWriteMutexThreadA.setName("writewriteMutexA");
+
+        ThreadWriteWriteMutexB writeWriteMutexThreadB = new ThreadWriteWriteMutexB(readWriteLock_writeWriteMutex);
+        writeWriteMutexThreadB.setName("writewriteMutexB");
+
+        writeWriteMutexThreadA.start();
+        writeWriteMutexThreadB.start();
+    }
+
+    public void testPra8_3() {
+
+        ReadWriteLock_ReadWriteMutex readWriteLock_readWriteMutex = new ReadWriteLock_ReadWriteMutex();
+
+        ThreadReadWriteMutexA threadReadWriteMutexA = new ThreadReadWriteMutexA(readWriteLock_readWriteMutex);
+        threadReadWriteMutexA.setName("readwriteMutxA");
+
+        ThreadReadWriteMutexB threadReadWriteMutexB = new ThreadReadWriteMutexB(readWriteLock_readWriteMutex);
+        threadReadWriteMutexB.setName("readwriteMutxB");
+
+        threadReadWriteMutexA.start();
+        threadReadWriteMutexB.start();
+
+    }
+
+
     public static void main(String[] args) {
         PraLock praLock = new PraLock();
-        praLock.testPra7_3();
+        praLock.testPra8_3();
     }
 }
